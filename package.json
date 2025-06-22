@@ -1,17 +1,20 @@
 {
   "name": "h-portfolio",
+  "homepage": "https://parvinder8607.github.io/H-Portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.1.10",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

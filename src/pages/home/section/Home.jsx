@@ -2,78 +2,48 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import React, { useRef } from 'react';
-
+import Logo from '../component/Logo';
+import image1 from '../../../assets/images/image1.jpg'
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
-  const textRef = useRef();
-  const container = useRef();
-
-  useGSAP(() => {
-    const ctx = gsap.matchMedia();
-
-    ctx.add(
-      {
-        isDesktop: '(min-width: 768px)',
-        isMobile: '(max-width: 767px)',
-      },
-      (context) => {
-        const { isMobile } = context.conditions;
-
-        const split = new SplitText(textRef.current, { type: 'words, chars' });
-
-        const tl = gsap.timeline();
-
-        tl.from(split.chars, {
-          y: '100%',
-          duration: 1,
-          ease: 'power1.out',
-          stagger: 0.05,
-        });
-
-        tl.to(
-          container.current,
-          {
-            transform: 'translate(0,0)',
-            top: 15,
-            left: 15,
-            
-            duration: 1,
-            ease: 'power1.out',
-          },
-          '+=0.2'
-        );
-
-        tl.to(
-          textRef.current,
-          {
-            fontSize: isMobile ? '24px' : '32px',
-            duration: 1,
-            ease: 'power1.out',
-          },
-          '<'
-        );
-      }
-    );
-
-    return () => ctx.revert();
-  }, []);
+  
 
   return (
     <section className="relative w-full h-screen p-4">
-      <div
-        ref={container}
-        className="absolute overflow-hidden  max-sm:w-full  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      >
-        <h1
-          ref={textRef}
-          style={{ fontFamily: 'Gugi' }}
-          className=" text-[42px] lg:text-[100px] leading-tight"
-        >
-          Himanshi Bisht
-        </h1>
-      </div>
+      <Logo />  
+      <div className="h-full p-4 flex flex-col lg:flex-row">
+        <div className="w-1/2 h-full  flex justify-center items-center ">
+        <div className="w-3/4 h-3/4 overflow-hidden  relative grid grid-cols-4 grid-rows-4  ">
+        <img src={image1} className='absolute aspect-square object-cover -z-10'   />
+        <div className="border-2 border-white ">
+            <div className="w-1/2 h-full bg-white"></div>
+        </div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white bg-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        <div className="border-2 border-white "></div>
+        </div>
+        </div>
+        <div className="w-1/2 h-full flex flex-col justify-center border">
+
+        </div>
+
+
+        </div>    
+      
     </section>
   );
 };
